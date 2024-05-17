@@ -1,0 +1,24 @@
+@import "~src/sass/main.scss";
+
+.button{
+    width: 180px;
+    height: 48px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: $regular;
+    font-family: $roboto;
+    border-radius: 8px;
+    background-color: $salmon;
+    color: $white;
+    border: none;
+    margin: 32px 0px;
+    &:hover{
+        background-color: #f1425e;
+        cursor: pointer;
+    }
+    &:disabled{
+        background-color: #fca5af;
+
+    }
+    
+}

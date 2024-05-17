@@ -1,0 +1,99 @@
+<div class="formulario">
+  <section class="formulario__contenedor">
+    <div  class="formulario__contenedor__header">
+      <img (click)="onBack()" src="assets/icons/arrowBack.svg" alt="" />
+    </div>
+    <div class="formulario__contenedor__cont">
+      <div
+        *ngIf="formularioActual === 0"
+        class="formulario__contenedor__cont__informacion"
+      >
+        <div class="formulario__contenedor__cont__informacion__header">
+          <img src="assets/imgs/formulario-1.jpg" alt="" />
+        </div>
+        <div class="formulario__contenedor__cont__informacion__description">
+          <p
+            class="formulario__contenedor__cont__informacion__description__text"
+          >
+            Necesitamos conocernos un poco más
+          </p>
+        </div>
+        <div class="formulario__contenedor__cont__informacion__button">
+          <app-button (click)="onContinue()" [textInput]="'Continuar'"></app-button>
+        </div>
+      </div>
+
+      <form
+        *ngIf="formularioActual === 1"
+        class="formulario__contenedor__cont__form"
+      >
+        <app-input
+          [textLabel]="'Primero Nombre'"
+          [textPlaceHolder]="'Primer Nombre'"
+          [type]="'text'"
+        ></app-input>
+        <app-input
+          [textLabel]="'Primero Apellido'"
+          [textPlaceHolder]="'Primer Apellido'"
+          [type]="'text'"
+        ></app-input>
+        <app-input
+          [textLabel]="'Ingresos Mensuales'"
+          [textPlaceHolder]="'Ingresos Mensuales'"
+          [type]="'number'"
+        ></app-input>
+        <div class="formulario__contenedor__cont__form__button">
+          <app-button (click)="onContinue()"  [textInput]="'Siguiente'"></app-button>
+        </div>
+      </form>
+
+      <form
+        *ngIf="formularioActual === 2"
+        class="formulario__contenedor__cont__form"
+      >
+        <app-input
+          [textLabel]="'Tipo de empleo'"
+          [textPlaceHolder]="'Tipo de empleo'"
+          [type]="'text'"
+        ></app-input>
+        <app-input
+          [textLabel]="'Antigüedad en el empleo actual meses'"
+          [textPlaceHolder]="'Antigüedad en el empleo actual meses'"
+          [type]="'text'"
+        ></app-input>
+        <app-input
+          [textLabel]="'Gastos Mensuales'"
+          [textPlaceHolder]="'Gastos Mensuales'"
+          [type]="'number'"
+        ></app-input>
+        <div class="formulario__contenedor__cont__form__button">
+          <app-button (click)="onContinue()"  [textInput]="'Siguiente'"></app-button>
+        </div>
+      </form>
+
+      <form
+        *ngIf="formularioActual === 3"
+        class="formulario__contenedor__cont__form"
+      >
+        <app-input
+          [textLabel]="'Motivo Solicitud'"
+          [textPlaceHolder]="'Tipo de empleo'"
+          [type]="'text'"
+        ></app-input>
+        <app-input
+          [textLabel]="'Estado Civil'"
+          [textPlaceHolder]="'Estado Civil'"
+          [type]="'text'"
+        ></app-input>
+        <app-input
+          [textLabel]="'Dependientes financieros'"
+          [textPlaceHolder]="'Dependientes financieros'"
+          [type]="'number'"
+        ></app-input>
+        <div class="formulario__contenedor__cont__form__button">
+          <app-button [textInput]="'Solicitar'"></app-button>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>

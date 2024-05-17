@@ -1,0 +1,41 @@
+@import "~src/sass/main.scss";
+
+.input{
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    gap: 8px;
+    margin: 12px 0px;
+    &__label{
+        color: $black;
+        font-family: $roboto;
+        font-size: 12px;
+        margin-left: 3px;
+    }
+    &__input{
+        border:none;
+        background-color: transparent;
+        border-bottom: 1px solid #fca5af;
+        outline: none; 
+        padding-bottom: 10px;
+        transition: border-bottom 0.3s ease; 
+        &::placeholder{
+            color: $black;
+            font-family: $roboto;
+            margin-bottom: 30px;
+            font-size: 16px;
+            transition: font-size 0.3s ease; 
+
+
+        }
+        &:focus{
+            border: none;
+            border-bottom: 2px solid $salmon;
+         
+            &::placeholder{
+                color: #6d6d6d;
+                font-size: 14px;
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+@import "~src/sass/main.scss";
+
+.formulario {
+  width: 100%;
+  background-color: #1e183f;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__contenedor {
+    width: 90%;
+    height: 60%;
+    background-color: #ffff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    &__header{
+      width: calc(100% - 16px);
+      padding: 16px 8px 0px;
+
+    }
+    &__cont {
+      width: calc(90% - 48px);
+      &__informacion {
+        &__header {
+          display: flex;
+          align-items: center;
+          justify-content: center; 
+          img {
+            width: 80%;
+          }
+        }
+        &__description {
+          width: 100%;
+          text-align: center;
+          &__text {
+            font-size: 16px;
+            font-weight: $regular;
+            color: $black;
+            font-family: $roboto;
+          }
+        }
+        &__button {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      &__form {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  }
+}
