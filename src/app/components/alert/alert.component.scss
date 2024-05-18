@@ -1,0 +1,28 @@
+@import '~src/sass/main.scss';
+
+.alert {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    padding: 16px;
+    width: 320px;
+    height: 56px;
+    transform: translate(-50%, -50%);
+    border: 1px solid $salmon;
+    border-radius: 8px;
+    background-color: #ffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    animation: slideInOut 2s ease infinite;
+}
+
+@keyframes slideInOut {
+    0%, 100% {
+        top: -10%;
+    }
+    50% {
+        top: 10%;
+    }
+}

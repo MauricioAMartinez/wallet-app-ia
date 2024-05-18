@@ -1,4 +1,13 @@
 <div class="input">
-    <label class="input__label" for="">{{textLabel}} </label>
-    <input class="input__input" [placeholder]="textPlaceHolder" [type]="type">
-</div>
+    <label class="input__label">{{ textLabel }}</label>
+    <input
+      class="input__input"
+      [placeholder]="textPlaceHolder"
+      [type]="type"
+      [value]="value"
+      (input)="handleInput($event)"
+    />
+    <span *ngIf="error" class="input__error"> {{textError}} </span>
+  </div>
+
+  

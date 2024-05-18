@@ -1,25 +1,52 @@
 <div class="login">
     <div class="login__image">
-        <img src="assets/imgs/wallet.png" alt="image send money">
+      <img src="assets/imgs/wallet.png" alt="image send money" />
     </div>
     <div class="login__canguro">
-        <div class="login__canguro__title">
-            <h1 class="login__canguro__title__text">Eeasy to Manage <br> & <br>
-            Easy to Pay</h1>
-        </div>
-        <form class="login__canguro__formulario" >
-            <app-input
-            [textLabel]="'E-mail'"  
-            [textPlaceHolder]="'E-mail'"
-            [type]="'email'"
-            ></app-input>
-            <app-input
-            [textLabel]="'Password'"  
-            [textPlaceHolder]="'Password'"
-            [type]="'Password'"
-            ></app-input>
-            <app-button [textInput]="'Ingresar'" ></app-button>
-
-        </form>
+      <div class="login__canguro__title">
+        <h1 class="login__canguro__title__text">
+          Easy to Manage <br />
+          & <br />
+          Easy to Pay
+        </h1>
+      </div>
+      <form
+        #authForm="ngForm"
+        class="login__canguro__formulario"
+        (ngSubmit)="onSubmit()"
+      >
+        <app-input
+          [(ngModel)]="authUser.email"
+          name="email"
+          [textLabel]="'E-mail'"
+          [textPlaceHolder]="'E-mail'"
+          [type]="'email'"
+          [error]="!!authForm.controls['email']?.invalid && !!authForm.controls['email']?.touched"
+          [textError]="'E-mail is not valid'"
+          required
+          email
+        >
+        </app-input>
+        <app-input
+          [(ngModel)]="authUser.password"
+          name="password"
+          [textLabel]="'Password'"
+          [textPlaceHolder]="'Password'"
+          [type]="'password'"
+          [error]="!!authForm.controls['password']?.invalid && !!authForm.controls['password']?.touched"
+          [textError]="'Password is required'"
+          required
+        >
+        </app-input>
+        <app-button
+          [disabled]="!authForm.valid"
+          [textInput]="'Ingresar'"
+          (clickEvent)="submitForm(authForm)"
+        >
+        </app-button>
+      </form>
     </div>
-</div>
+  </div>
+  
+  <app-alert *ngIf="error" [textAlert]="textAlertError" ></app-alert>
+  <app-loading></app-loading>

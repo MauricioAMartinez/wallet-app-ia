@@ -58,7 +58,8 @@
   &__card {
     width: calc(90% - 48px);
     height: 160px;
-    background-color: #fff;
+    background-color: #14141447;
+    border: 1px solid $salmon;
     border-radius: 16px;
     padding: 24px;
   }
