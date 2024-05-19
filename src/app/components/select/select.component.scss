@@ -1,0 +1,19 @@
+@import '~src/sass/main.scss';
+.select {
+    position: relative;
+    font-family: Arial;
+    width: 240px;
+    &__list{
+      width: 100%;
+      height: 46px;
+      border: none;
+      border-bottom: 1px solid $salmon;
+      background-color: $white;
+      font-size: 14px;
+      font-family: $roboto;
+      &:focus{
+        outline: none;
+      }
+    }
+    
+  }

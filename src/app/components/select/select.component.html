@@ -1,0 +1,12 @@
+<div class="select">
+  <select class="select__list" (change)="handleSelectChange($event)" [value]="value">
+    <ng-container *ngTemplateOutlet="optionTemplate; context: { $implicit: options }"></ng-container>
+  </select>
+</div>
+
+<!-- Definición del template para cada opción -->
+<ng-template #optionTemplate let-options>
+  <option class="select__list__option" *ngFor="let option of options" [value]="option.TipoTrabajoId">
+    {{ option.Nombre }}
+  </option>
+</ng-template>

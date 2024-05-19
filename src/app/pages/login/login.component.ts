@@ -10,8 +10,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   authUser = {
-    email: '',
-    password: '',
+    email: 'user1@example.com',
+    password: 'user1password',
   };
 
   error: boolean = false;
@@ -27,10 +27,19 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this._authServices.auth(this.authUser).subscribe(
-      (...response) => {
-        console.log('Response:', response);
-        this._cookieService.set('token_acces', 'ffffffff', 4, '/');
-        this.router.navigate(['/home'])
+      (response: any) => {
+        const {token,UserId,RolUserId} = response
+  
+        if (token) {
+     
+          this._cookieService.set('token_acces', token, 4, '/');
+          this._cookieService.set('UserId', UserId, 4, '/');
+          this._cookieService.set('RolUserId', RolUserId, 4, '/');
+          this.router.navigate(['/home']);
+        } else {
+          console.error('Token no recibido');
+          this.onActivateError('Token no recibido');
+        }
       },
       (error) => {
         console.error('Error:', error);
@@ -38,6 +47,7 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+  
 
   submitForm(authForm: any): void {
     if (authForm.valid) {

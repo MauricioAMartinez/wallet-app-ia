@@ -1,6 +1,6 @@
 <div class="formulario">
   <section class="formulario__contenedor">
-    <div  class="formulario__contenedor__header">
+    <div class="formulario__contenedor__header">
       <img (click)="onBack()" src="assets/icons/arrowBack.svg" alt="" />
     </div>
     <div class="formulario__contenedor__cont">
@@ -19,79 +19,133 @@
           </p>
         </div>
         <div class="formulario__contenedor__cont__informacion__button">
-          <app-button (click)="onContinue()" [textInput]="'Continuar'"></app-button>
+          <app-button
+            (click)="onContinue()"
+            [textInput]="'Continuar'"
+          ></app-button>
         </div>
       </div>
-
-      <form
-        *ngIf="formularioActual === 1"
-        class="formulario__contenedor__cont__form"
-      >
-        <app-input
-          [textLabel]="'Primero Nombre'"
-          [textPlaceHolder]="'Primer Nombre'"
-          [type]="'text'"
-        ></app-input>
-        <app-input
-          [textLabel]="'Primero Apellido'"
-          [textPlaceHolder]="'Primer Apellido'"
-          [type]="'text'"
-        ></app-input>
-        <app-input
-          [textLabel]="'Ingresos Mensuales'"
-          [textPlaceHolder]="'Ingresos Mensuales'"
-          [type]="'number'"
-        ></app-input>
-        <div class="formulario__contenedor__cont__form__button">
-          <app-button (click)="onContinue()"  [textInput]="'Siguiente'"></app-button>
+      <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+        <div
+          *ngIf="formularioActual === 1"
+          class="formulario__contenedor__cont__form"
+        >
+          <app-input
+            [(ngModel)]="personalInfo.nombre"
+            [textLabel]="'Primer Nombre'"
+            [textPlaceHolder]="'Primer Nombre'"
+            [type]="'text'"
+            name="nombre"
+            [error]="!!formulario.controls['nombre']?.invalid && !!formulario.controls['nombre']?.touched"
+            [textError]="'Primer Nombre is required'"
+            required
+          ></app-input>
+          <app-input
+            [(ngModel)]="personalInfo.apellido"
+            [textLabel]="'Primer Apellido'"
+            [textPlaceHolder]="'Primer Apellido'"
+            [type]="'text'"
+            name="apellido"
+            [error]="!!formulario.controls['apellido']?.invalid && !!formulario.controls['apellido']?.touched"
+            [textError]="'Primer Apellido is required'"
+            required
+          ></app-input>
+          <app-input
+            [(ngModel)]="personalInfo.ingresos_mensuales"
+            [textLabel]="'Ingresos Mensuales'"
+            [textPlaceHolder]="'Ingresos Mensuales'"
+            [type]="'number'"
+            name="ingresos_mensuales"
+            [error]="!!formulario.controls['ingresos_mensuales']?.invalid && !!formulario.controls['ingresos_mensuales']?.touched"
+            [textError]="'Ingresos Mensuales is required'"
+            required
+          ></app-input>
+          <div class="formulario__contenedor__cont__form__button">
+            <app-button
+              (click)="onContinue()"
+              [textInput]="'Siguiente'"
+            ></app-button>
+          </div>
         </div>
-      </form>
 
-      <form
-        *ngIf="formularioActual === 2"
-        class="formulario__contenedor__cont__form"
-      >
-        <app-input
-          [textLabel]="'Tipo de empleo'"
-          [textPlaceHolder]="'Tipo de empleo'"
-          [type]="'text'"
-        ></app-input>
-        <app-input
-          [textLabel]="'Antigüedad en el empleo actual meses'"
-          [textPlaceHolder]="'Antigüedad en el empleo actual meses'"
-          [type]="'text'"
-        ></app-input>
-        <app-input
-          [textLabel]="'Gastos Mensuales'"
-          [textPlaceHolder]="'Gastos Mensuales'"
-          [type]="'number'"
-        ></app-input>
-        <div class="formulario__contenedor__cont__form__button">
-          <app-button (click)="onContinue()"  [textInput]="'Siguiente'"></app-button>
+        <div
+          *ngIf="formularioActual === 2"
+          class="formulario__contenedor__cont__form"
+        >
+          <app-select
+          [options]="listaTrabajos"
+          [(ngModel)]="personalInfo.tipo_empleo"
+          name="tipo_empleo"
+          ></app-select>
+          <app-input
+            [(ngModel)]="personalInfo.antiguedad_empleo"
+            [textLabel]="'Antigüedad en el empleo actual meses'"
+            [textPlaceHolder]="'Antigüedad en el empleo actual meses'"
+            [type]="'number'"
+            name="antiguedad_empleo"
+            [error]="!!formulario.controls['antiguedad_empleo']?.invalid && !!formulario.controls['antiguedad_empleo']?.touched"
+            [textError]="'Antigüedad en el empleo actual meses is required'"
+            required
+          ></app-input>
+          <app-input
+            [(ngModel)]="personalInfo.gastos_mensuales"
+            [textLabel]="'Gastos Mensuales'"
+            [textPlaceHolder]="'Gastos Mensuales'"
+            [type]="'number'"
+            name="gastos_mensuales"
+            [error]="!!formulario.controls['gastos_mensuales']?.invalid && !!formulario.controls['gastos_mensuales']?.touched"
+            [textError]="'Gastos Mensuales is required'"
+            required
+          ></app-input>
+          <div class="formulario__contenedor__cont__form__button">
+            <app-button
+              (click)="onContinue()"
+              [textInput]="'Siguiente'"
+            ></app-button>
+          </div>
         </div>
-      </form>
 
-      <form
-        *ngIf="formularioActual === 3"
-        class="formulario__contenedor__cont__form"
-      >
-        <app-input
-          [textLabel]="'Motivo Solicitud'"
-          [textPlaceHolder]="'Tipo de empleo'"
-          [type]="'text'"
-        ></app-input>
-        <app-input
-          [textLabel]="'Estado Civil'"
-          [textPlaceHolder]="'Estado Civil'"
-          [type]="'text'"
-        ></app-input>
-        <app-input
-          [textLabel]="'Dependientes financieros'"
-          [textPlaceHolder]="'Dependientes financieros'"
-          [type]="'number'"
-        ></app-input>
-        <div class="formulario__contenedor__cont__form__button">
-          <app-button [textInput]="'Solicitar'"></app-button>
+        <div
+          *ngIf="formularioActual === 3"
+          class="formulario__contenedor__cont__form"
+        >
+          <app-input
+            [(ngModel)]="personalInfo.motivo_solicitud"
+            [textLabel]="'Motivo Solicitud'"
+            [textPlaceHolder]="'Motivo Solicitud'"
+            [type]="'text'"
+            name="motivo_solicitud"
+            [error]="!!formulario.controls['motivo_solicitud']?.invalid && !!formulario.controls['motivo_solicitud']?.touched"
+            [textError]="'Motivo Solicitud is required'"
+            required
+          ></app-input>
+          <app-input
+            [(ngModel)]="personalInfo.estado_civil"
+            [textLabel]="'Estado Civil'"
+            [textPlaceHolder]="'Estado Civil'"
+            [type]="'text'"
+            name="estado_civil"
+            [error]="!!formulario.controls['estado_civil']?.invalid && !!formulario.controls['estado_civil']?.touched"
+            [textError]="'Estado Civil is required'"
+            required
+          ></app-input>
+          <app-input
+            [(ngModel)]="personalInfo.dependientes_financieros"
+            [textLabel]="'Dependientes financieros'"
+            [textPlaceHolder]="'Dependientes financieros'"
+            [type]="'number'"
+            name="dependientes_financieros"
+            [error]="!!formulario.controls['dependientes_financieros']?.invalid && !!formulario.controls['dependientes_financieros']?.touched"
+            [textError]="'Dependientes financieros is required'"
+            required
+          ></app-input>
+          <div class="formulario__contenedor__cont__form__button">
+            <app-button
+              [textInput]="'Solicitar'"
+              (clickEvent)="submitForm(formulario)"
+              [disabled]="!formulario.valid"
+            ></app-button>
+          </div>
         </div>
       </form>
     </div>

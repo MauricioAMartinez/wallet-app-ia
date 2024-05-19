@@ -19,8 +19,8 @@ export class InputComponent implements ControlValueAccessor {
   @Input() type: string = 'text';
   @Input() error: boolean = false;
   @Input() textError: string = ''
+  @Input() value: string = '';
 
-  value: any;
   onChange: any = () => {};
   onTouched: any = () => {};
 
@@ -37,7 +37,7 @@ export class InputComponent implements ControlValueAccessor {
   }
 
   setDisabledState?(isDisabled: boolean): void {
-    // Optional: handle disabled state if needed
+  
   }
 
   handleInput(event: Event): void {
