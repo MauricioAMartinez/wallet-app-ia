@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { ComponentsModule } from '../components/components.module';
 import { FormsModule } from '@angular/forms';
+import { StatusCardComponent } from './status-card/status-card.component';
 
 
 
@@ -12,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     LoginComponent,
     HomeComponent,
-    FormularioComponent
+    FormularioComponent,
+    StatusCardComponent
   ],
   imports: [
     CommonModule,

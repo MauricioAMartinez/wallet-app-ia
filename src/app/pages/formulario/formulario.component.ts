@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SolicitudService } from 'src/app/services/solicitud.service';
 import { TipoTrabajosService } from 'src/app/services/tipo-trabajos.service';
 
 @Component({
@@ -23,7 +24,9 @@ export class FormularioComponent implements OnInit {
   };
 
   listaTrabajos = {}
-  constructor(private router: Router, private _tipoTrabajoServices : TipoTrabajosService) {}
+  constructor(
+    private router: Router, 
+    private _tipoTrabajoServices : TipoTrabajosService  ) {}
 
   ngOnInit(): void {
     this.getSorage();
@@ -41,17 +44,16 @@ export class FormularioComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.personalInfo);
-    //1.LLamar datos local Storage
-    //2.Enviar datos al servidor
-    //3.Generar la solicitud a la API de python para la respuesta
+    const personalInfo = localStorage.getItem('personalInfo')
+    this.router.navigate(['/statusCard']);
+ 
   }
 
   submitForm(formulario: any): void {
     if (formulario.valid) {
       formulario.ngSubmit.emit();
     } else {
-      console.log('Formulario Invalido');
+      // console.log('Formulario Invalido');
     }
   }
 

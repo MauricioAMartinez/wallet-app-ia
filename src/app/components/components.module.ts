@@ -5,6 +5,7 @@ import { InputComponent } from './input/input.component';
 import { AlertComponent } from './alert/alert.component';
 import { LoadingComponent } from './loading/loading.component';
 import { SelectComponent } from './select/select.component';
+import { Loading2Component } from './loading2/loading2.component';
 
 
 
@@ -14,7 +15,8 @@ import { SelectComponent } from './select/select.component';
     InputComponent,
     AlertComponent,
     LoadingComponent,
-    SelectComponent
+    SelectComponent,
+    Loading2Component
   ],
   imports: [
     CommonModule
@@ -24,7 +26,9 @@ import { SelectComponent } from './select/select.component';
     InputComponent,
     AlertComponent,
     LoadingComponent,
-    SelectComponent
+    SelectComponent,
+    Loading2Component,
+    
   ]
 })
 export class ComponentsModule { }

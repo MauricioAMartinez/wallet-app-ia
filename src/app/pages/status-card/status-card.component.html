@@ -1,0 +1,7 @@
+<div class="statusCard">
+    <img *ngIf="status" src="../../../assets/animations/Aproved.gif" alt="">
+    <img *ngIf="!status" src="../../../assets/animations/NoAproved.gif" alt="">
+    <p class="statusCard__text" > {{textStatus}} </p>
+</div>
+
+<app-loading2 *ngIf="loading" ></app-loading2>
